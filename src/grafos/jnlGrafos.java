@@ -175,14 +175,14 @@ public class jnlGrafos extends javax.swing.JFrame {
 
     private void btnKruskalActionPerformed(java.awt.event.ActionEvent evt) {
 
-
         listaRes.removeAll();
         listaRes.setListData(Algoritmos.kruskal(this.grafo).toArray());
 
     }
 
     private void btnBuscaProfundidadeActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO: implementar ação de busca em profundidade
+        listaRes.removeAll();
+        listaRes.setListData(Algoritmos.Profundidade(this.grafo).toArray());
     }
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed

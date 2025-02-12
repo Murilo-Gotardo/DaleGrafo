@@ -1,7 +1,6 @@
 package grafos;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Nesta classe devem ser implementados todos os métodos de grafos de forma estática
@@ -15,11 +14,62 @@ public class Algoritmos {
         return resultado;
     }
 
+
+    public static List<Vertice> Profundidade(Grafo g) {
+        ArrayList<Vertice> vertices = g.obterVertices();
+        Stack<Vertice> pilha = new Stack<>();
+
+        List<Vertice> ordemDeVisita = new ArrayList<>();
+
+        pilha.add(vertices.get(0));
+        pilha.lastElement().visitar();
+        boolean repetir = true;
+
+        while(repetir){
+            Queue<Vertice> aux = new LinkedList<>();
+
+            Vertice vAtual = pilha.lastElement();
+            ordemDeVisita.add(vAtual);
+
+            int n = vAtual.obterArcos().size();
+            int c = -1;
+
+            ;
+
+            for (int i = 0; i < n; i++) {
+
+                Vertice v = vAtual.obterArcos().get(i).getDestino();
+
+                if (v.obterVisitado() == 0){
+                    v.visitar();
+                    aux.add(v);
+                    c++;
+                }
+
+            }
+
+            pilha.pop();
+
+            if (!aux.isEmpty()){
+                int m = aux.size();
+                for (int i = 0; i < m; i++) {
+                    pilha.add(aux.poll());
+                }
+            }
+
+            if (pilha.isEmpty())
+                repetir = false;
+        }
+
+
+        return ordemDeVisita;
+    }
+
+
     // Código simples
     public static List<Arco> kruskal(Grafo g) {
         List<Arco> arcosOrdenados = new ArrayList<>(g.obterTodosOsArcos());
         arcosOrdenados.sort(Comparator.comparingDouble(Arco::getPeso));
-
         ArrayList<Vertice> vertices = g.obterVertices();
 
         int count = 1;
