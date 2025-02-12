@@ -182,7 +182,7 @@ public class jnlGrafos extends javax.swing.JFrame {
 
     private void btnBuscaProfundidadeActionPerformed(java.awt.event.ActionEvent evt) {
         listaRes.removeAll();
-        listaRes.setListData(Algoritmos.Profundidade(this.grafo).toArray());
+        listaRes.setListData(Algoritmos.profundidade(this.grafo).toArray());
     }
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed

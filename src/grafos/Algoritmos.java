@@ -15,10 +15,9 @@ public class Algoritmos {
     }
 
 
-    public static List<Vertice> Profundidade(Grafo g) {
+    public static List<Vertice> profundidade(Grafo g) {
         ArrayList<Vertice> vertices = g.obterVertices();
         Stack<Vertice> pilha = new Stack<>();
-
         List<Vertice> ordemDeVisita = new ArrayList<>();
 
         pilha.add(vertices.get(0));
@@ -32,9 +31,6 @@ public class Algoritmos {
             ordemDeVisita.add(vAtual);
 
             int n = vAtual.obterArcos().size();
-            int c = -1;
-
-            ;
 
             for (int i = 0; i < n; i++) {
 
@@ -43,7 +39,6 @@ public class Algoritmos {
                 if (v.obterVisitado() == 0){
                     v.visitar();
                     aux.add(v);
-                    c++;
                 }
 
             }
@@ -59,8 +54,8 @@ public class Algoritmos {
 
             if (pilha.isEmpty())
                 repetir = false;
-        }
 
+        }
 
         return ordemDeVisita;
     }
