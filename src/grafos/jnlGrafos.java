@@ -7,6 +7,7 @@ package grafos;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -174,10 +175,15 @@ public class jnlGrafos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnKruskalActionPerformed(java.awt.event.ActionEvent evt) {
-
         listaRes.removeAll();
-        listaRes.setListData(Algoritmos.kruskal(this.grafo).toArray());
 
+        List<Arco> mst = Algoritmos.kruskal(this.grafo);
+
+        String[] resultado = mst.stream()
+                .map(a -> a.getOrigem() + " -> " + a.getDestino() + " (" + a.getPeso() + ")")
+                .toArray(String[]::new);
+
+        listaRes.setListData(resultado);
     }
 
     private void btnBuscaProfundidadeActionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,12 +285,12 @@ public class jnlGrafos extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList jList;
+    private javax.swing.JList<Object> jList;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblStatus;
-    private javax.swing.JList listaRes;
+    private javax.swing.JList<Object> listaRes;
     // End of variables declaration//GEN-END:variables
 }

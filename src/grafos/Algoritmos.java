@@ -7,20 +7,13 @@ import java.util.*;
  * @author vilson.junior
  */
 public class Algoritmos {
-    
-    public static ArrayList<Vertice> percorreLargura(Grafo g, Vertice inicio) {
-        ArrayList<Vertice> resultado = new ArrayList<>();
-
-        return resultado;
-    }
-
 
     public static List<Vertice> profundidade(Grafo g) {
         ArrayList<Vertice> vertices = g.obterVertices();
         Stack<Vertice> pilha = new Stack<>();
         List<Vertice> ordemDeVisita = new ArrayList<>();
 
-        pilha.add(vertices.get(0));
+        pilha.add(vertices.getFirst());
         pilha.lastElement().visitar();
         boolean repetir = true;
 
@@ -60,8 +53,6 @@ public class Algoritmos {
         return ordemDeVisita;
     }
 
-
-    // Código simples
     public static List<Arco> kruskal(Grafo g) {
         List<Arco> arcosOrdenados = new ArrayList<>(g.obterTodosOsArcos());
         arcosOrdenados.sort(Comparator.comparingDouble(Arco::getPeso));
